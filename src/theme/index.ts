@@ -3,46 +3,8 @@ import { createTheme } from "@mui/material";
 
 export const tokens = (mode: string) => ({
   ...(mode === "dark"
-    ? {
-        accentBlue: {
-          DEFAULT: "#1900D5",
-          100: "#05002D",
-          200: "#0C0065",
-          300: "#120090",
-          400: "#1900D5",
-          500: "#1E00FE",
-          600: "#4128FF",
-          700: "#6550FF",
-          800: "#8979FF",
-          900: "#9B8EFF",
-        },
-        seconddary:{
-          DEFAULT: "#7C7C7C",
-        },
-        lime: {
-          DEFAULT: "#C1EF00",
-          100: "#394700",
-          200: "#667F00",
-          300: "#94B700",
-          400: "#C1EF00",
-          500: "#D3FF19",
-          600: "#DBFF42",
-          700: "#E2FF6A",
-          800: "#EAFF93",
-          900: "#EEFFA8",
-        },
-        cinnabar: {
-          DEFAULT: "#E8502F",
-          100: "#641B0B",
-          200: "#962811",
-          300: "#C93616",
-          400: "#E8502F",
-          500: "#EC6F54",
-          600: "#F08E78",
-          700: "#F4AD9D",
-          800: "#F8CCC2",
-          900: "#FADBD4",
-        },
+    ? 
+    {
         primary: {
           DEFAULT: "#000000",
           100: "#000000",
@@ -54,6 +16,9 @@ export const tokens = (mode: string) => ({
           700: "#3D3D3D",
           800: "#525252",
           900: "#5C5C5C",
+        },
+        seconddary: {
+          DEFAULT: "#7C7C7C",
         },
         black: {
           DEFAULT: "#000000",
@@ -79,39 +44,21 @@ export const tokens = (mode: string) => ({
           800: "#8E8E8E",
           900: "#989898",
         },
-        gray: {
-          DEFAULT: "#7C7C7C",
-          100: "#282828",
-          200: "#444444",
-          300: "#606060",
-          400: "#7C7C7C",
-          500: "#909090",
-          600: "#A5A5A5",
-          700: "#B9B9B9",
-          800: "#CECECE",
-          900: "#D8D8D8",
-        },
-        mintGreen: {
-          DEFAULT: "#A9FFA7",
-          100: "#06FE00",
-          200: "#3BFF37",
-          300: "#72FF6F",
-          400: "#A9FFA7",
-          500: "#D1FFD0",
-          600: "#F9FFF9",
-          700: "#FFFFFF",
-          800: "#FFFFFF",
-          900: "#FFFFFF",
-        },
+
         white: {
           DEFAULT: "#FFFFFF",
           100: "#F7F7F7",
         },
-      }
-    : {
-      seconddary:{
-        DEFAULT: "#7C7C7C",
-      },
+        gray: {
+          DEFAULT: "#3C3C3C",
+        },
+        accentMain: {
+          DEFAULT: "#0F0E0E",
+        },
+        borderColor: "#3C3C3C",
+    }
+    : 
+    {
         white: {
           DEFAULT: "#FFFFFF",
           100: "#F7F7F7",
@@ -121,42 +68,10 @@ export const tokens = (mode: string) => ({
           DEFAULT: "#FFFFFF",
           600: "#F7F7F7",
         },
-        accentBlue: {
-          DEFAULT: "#1900D5",
-          100: "#8979FF",
-          200: "#6550FF",
-          300: "#4128FF",
-          400: "#1E00FE",
-          500: "#1900D5",
-          600: "#12009D",
-          700: "#0C0065",
-          800: "#05002D",
-          900: "#000000",
+        seconddary: {
+          DEFAULT: "#7C7C7C",
         },
-        lime: {
-          DEFAULT: "#C1EF00",
-          100: "#EAFF93",
-          200: "#E2FF6A",
-          300: "#DBFF42",
-          400: "#D3FF19",
-          500: "#C1EF00",
-          600: "#94B700",
-          700: "#667F00",
-          800: "#394700",
-          900: "#0C0F00",
-        },
-        cinnabar: {
-          DEFAULT: "#E8502F",
-          100: "#F8CCC2",
-          200: "#F4AD9D",
-          300: "#F08E78",
-          400: "#EC6F54",
-          500: "#E8502F",
-          600: "#C93616",
-          700: "#962811",
-          800: "#641B0B",
-          900: "#310D05",
-        },
+        
         black: {
           DEFAULT: "#000000",
           100: "#525252",
@@ -182,29 +97,12 @@ export const tokens = (mode: string) => ({
           900: "#000000",
         },
         gray: {
-          DEFAULT: "#7C7C7C",
-          100: "#CECECE",
-          200: "#B9B9B9",
-          300: "#A5A5A5",
-          400: "#909090",
-          500: "#7C7C7C",
-          600: "#606060",
-          700: "#444444",
-          800: "#282828",
-          900: "#0C0C0C",
+          DEFAULT: "#3C3C3C",
         },
-        mintGreen: {
-          DEFAULT: "#A9FFA7",
-          100: "#FFFFFF",
-          200: "#FFFFFF",
-          300: "#F9FFF9",
-          400: "#D1FFD0",
-          500: "#A9FFA7",
-          600: "#72FF6F",
-          700: "#3BFF37",
-          800: "#06FE00",
-          900: "#04C600",
+        accentMain: {
+          DEFAULT: "#F7F7F7",
         },
+        borderColor: "#D1D1D1",
       }),
 });
 export const themeSettings: any = (mode: string) => {

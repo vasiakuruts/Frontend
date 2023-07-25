@@ -1,0 +1,22 @@
+.navBlock{
+   width: 100%;
+}
+
+.brand{
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   padding: 30px 15px;
+   cursor: pointer;
+}
+.navItem{
+
+}
+.navList{
+   margin-bottom: 55px;
+}
+.navItem:hover{
+   background-color: #1900D5 !important;
+   color: #fff;
+   border-radius: 4px;
+}

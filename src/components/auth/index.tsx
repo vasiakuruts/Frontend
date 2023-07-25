@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import LoginPage from "./login";
 import RegisterPage from "./register";
-import "./style.scss";
+import styled from "./style.module.css";
 import { Box } from "@mui/material";
 import { instance } from "../../utils/axios";
 import { useAppDispatch } from "../../utils/hook";
@@ -55,8 +55,8 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
   };
 
   return (
-    <div className="root">
-      <form className="form" onSubmit={handleSubmit}>
+    <div className={styled.root}>
+      <form className={styled.form} onSubmit={handleSubmit}>
         <Box
           display="flex"
           justifyContent="center"
@@ -88,7 +88,6 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
       </form>
     </div>
   );
-  //   return
 };
 
 export default AuthRootComponent;

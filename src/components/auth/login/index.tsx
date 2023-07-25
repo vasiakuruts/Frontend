@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { IPropsLogin } from "../../../common/types/auth";
+import styled from "../style.module.css";
 
 const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
   const { setPassword, setEmail, navigate } = props;
@@ -36,6 +37,7 @@ const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <Button
+        className={styled.incitingButton}
         type="submit"
         sx={{
           fontFamily: "Poppins",
@@ -49,7 +51,12 @@ const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
       </Button>
       <Typography variant="body1" sx={{ fontFamily: "Poppins" }}>
         Ще не зареєстровані?
-        <span className="incitingText" onClick={() => navigate("/register")}>Зареєструйтись</span>
+        <span
+          className={styled.incitingText}
+          onClick={() => navigate("/register")}
+        >
+          Зареєструйтись
+        </span>
       </Typography>
     </>
   );

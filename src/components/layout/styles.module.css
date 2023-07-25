@@ -1,0 +1,10 @@
+root {
+  display: flex;
+  width: 100%;
+}
+.mainSection {
+  display: flex;
+  width: 86%;
+  flex-direction: column;
+  justify-content: center;
+}
