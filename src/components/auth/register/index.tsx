@@ -1,6 +1,8 @@
 import React from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { IPropsRegister } from "../../../common/types/auth";
+import styled from "../style.module.css";
+
 const RegisterPage: React.FC<IPropsRegister> = (
   props: IPropsRegister
 ): JSX.Element => {
@@ -69,6 +71,7 @@ const RegisterPage: React.FC<IPropsRegister> = (
         onChange={(e) => setRepeatPassword(e.target.value)}
       />
       <Button
+        className={styled.incitingButton}
         type="submit"
         sx={{
           fontFamily: "Poppins",
@@ -82,7 +85,12 @@ const RegisterPage: React.FC<IPropsRegister> = (
       </Button>
       <Typography variant="body1" sx={{ fontFamily: "Poppins" }}>
         У вас є акаунт?
-        <span className="incitingText" onClick={() => navigate('/login')}>Авторизація</span>
+        <span
+          className={styled.incitingText}
+          onClick={() => navigate("/login")}
+        >
+          Авторизація
+        </span>
       </Typography>
     </>
   );

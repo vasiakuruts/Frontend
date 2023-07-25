@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useStyles } from "./styles";
+import { useEffect, useState } from "react";
 import {
   Box,
   Drawer,
@@ -14,28 +13,52 @@ import {
   useTheme,
 } from "@mui/material";
 import {
-  HomeOutlined,
   ChevronLeftOutlined,
   ChevronRightOutlined,
-  AutoGraphOutlined,
-  MenuBookOutlined,
-  SettingsOutlined,
+  ColorizeSharp,
   LogoutOutlined,
 } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "../flex-between";
+import { navMenu } from "../../common/moks/navigate";
+import { tokens } from "../../theme";
+import Logo from "../../assets/images/sidebar/logo.svg";
+import styled from "./styles.module.css";
 
 const SidebarComponent = (props: any) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   const [active, setActive] = useState("");
   const { isNonMobile, drawerWidth, isOpen, setIsOpen } = props;
-  const classes = useStyles();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const theme = useTheme();
+  
 
   useEffect(() => {
     setActive(pathname.substring(1));
   }, [pathname]);
+  const renderNavMenu = navMenu.map((element): JSX.Element => {
+    return (
+      <ListItem key={element.id}>
+        <ListItemButton
+          onClick={() => navigate(`${element.path}`)}
+          className={styled.navItem}
+          sx={{
+            "&:hover": {
+              '& .MuiSvgIcon-root':{
+                color: "#fff !important",
+              }
+            },
+          }}
+        >
+          <ListItemIcon>{element.icon}</ListItemIcon>
+          <ListItemText>
+            <Typography variant="body1">{element.name}</Typography>
+          </ListItemText>
+        </ListItemButton>
+      </ListItem>
+    );
+  });
   return (
     <Box component="nav">
       {isOpen && (
@@ -54,11 +77,26 @@ const SidebarComponent = (props: any) => {
             },
           }}
         >
-          <Box width="100%">
+          <Box
+            className={styled.navBlock}
+            sx={{
+              borderBottom: `1px solid ${colors.borderColor}`,
+            }}
+          >
             <Box>
               <FlexBetween>
-                <Box display="flex" alignItems="center" gap="10px">
-                  <Typography>Demo</Typography>
+                <Box className={styled.brand}>
+                  <img src={Logo} alt="logo" />
+                  <Typography
+                    variant="h1"
+                    color={
+                      theme.palette.mode === "dark"
+                        ? colors.white.DEFAULT
+                        : colors.black.DEFAULT
+                    }
+                  >
+                    Demo
+                  </Typography>
                 </Box>
                 {!isNonMobile && (
                   <IconButton onClick={() => setIsOpen(!isOpen)}>
@@ -67,6 +105,29 @@ const SidebarComponent = (props: any) => {
                 )}
               </FlexBetween>
             </Box>
+            <List className={styled.navList}>{renderNavMenu}</List>
+          </Box>
+          <Box width="100%">
+            <List>
+              <ListItem>
+                <ListItemButton className={styled.navItem}
+                  sx={{
+                    "&:hover": {
+                      '& .MuiSvgIcon-root':{
+                        color: "#fff !important",
+                      }
+                    },
+                  }}
+                >
+                  <ListItemIcon>
+                    <LogoutOutlined />
+                  </ListItemIcon>
+                  <ListItemText>
+                    <Typography>Logout</Typography>
+                  </ListItemText>
+                </ListItemButton>
+              </ListItem>
+            </List>
           </Box>
         </Drawer>
       )}
