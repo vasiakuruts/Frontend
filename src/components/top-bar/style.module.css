@@ -1,9 +1,14 @@
-.root {
-  display: flex;
+.root{
+  box-shadow: none !important;
+}
+.toolbar {
   justify-content: space-between;
-  align-items: center;
-  padding: 32px 24px;
-  max-height: 95px;
+  padding: 25px 45px;
+  
+}
+.menuIcon{
+  margin-right: 20px;
+  cursor: pointer;
 }
 .themeIcon {
   margin-right: 20px !important;
@@ -14,6 +19,7 @@
 }
 .searchInputBlock {
   display: flex;
+  max-height: 45px;
   border-radius: 8px;
   margin-left: 28px;
 }

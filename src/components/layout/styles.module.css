@@ -4,7 +4,7 @@ root {
 }
 .mainSection {
   display: flex;
-  width: 86%;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: center;
 }
