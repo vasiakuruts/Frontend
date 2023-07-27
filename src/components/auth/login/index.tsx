@@ -4,7 +4,7 @@ import { IPropsLogin } from "../../../common/types/auth";
 import styled from "../style.module.css";
 
 const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
-  const { setPassword, setEmail, navigate } = props;
+  const { navigate, register, errors } = props;
   return (
     <>
       <Typography variant="h2" fontFamily="Poppins" textAlign="center">
@@ -19,22 +19,34 @@ const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
         Введіть ваш пошту та пароль
       </Typography>
       <TextField
+        error={!!errors.email}
         fullWidth={true}
         margin="normal"
         type="email"
         label="Email"
         variant="outlined"
         placeholder="Введіть ваш emeil"
-        onChange={(e) => setEmail(e.target.value)}
+        helperText={errors.email ? `${errors.email.message}` : ""}
+        {...register("email", {
+          required: "Це обов`язкове поле!",
+          pattern: 
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        })
+        }
       />
       <TextField
+        error={!!errors.password}
         fullWidth={true}
         margin="normal"
         type="password"
         label="Password"
         variant="outlined"
         placeholder="Введіть ваш password"
-        onChange={(e) => setPassword(e.target.value)}
+        helperText={errors.password ? `${errors.password.message}` : ""}
+        {...register("password", {
+          required: "Це обов`язкове поле!",
+          minLength: 6,
+        })}
       />
       <Button
         className={styled.incitingButton}
