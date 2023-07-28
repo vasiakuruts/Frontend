@@ -1,0 +1,16 @@
+.incitingButton {
+   border-radius: 4px;
+   background-color: #1900d5 !important;
+   box-shadow: 0px 1px 7px #332a76 !important;
+   margin-top: 1.5rem !important;
+   margin-bottom: 1.5rem !important;
+   width: 60%;
+ }
+ .incitingText {
+   color: #1900d5;
+   margin-left: 10px;
+   cursor: pointer;
+ }
+ .form{
+   text-align: center;
+ }

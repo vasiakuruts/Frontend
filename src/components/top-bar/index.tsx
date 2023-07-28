@@ -8,7 +8,7 @@ import {
   useTheme,
   Typography,
 } from "@mui/material";
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import {
   LightMode,
   DarkMode,
@@ -18,8 +18,9 @@ import {
 } from "@mui/icons-material";
 import { ColorModeContext, tokens } from "../../theme";
 import styled from "./style.module.css";
+import { ITopBarProps } from "../../common/types/top-bar";
 
-const TopBarComponent = (props: any) => {
+const TopBarComponent:FC<ITopBarProps> = (props:ITopBarProps): JSX.Element => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode: any = useContext(ColorModeContext);
