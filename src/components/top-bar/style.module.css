@@ -1,12 +1,11 @@
-.root{
+.root {
   box-shadow: none !important;
 }
 .toolbar {
   justify-content: space-between;
   padding: 25px 45px;
-  
 }
-.menuIcon{
+.menuIcon {
   margin-right: 20px;
   cursor: pointer;
 }
@@ -28,4 +27,9 @@
 }
 .searchInput {
   padding: 12px 18px;
+}
+.flexBetween {
+  display: flex;
+  justify-content: "space-between";
+  align-items: "center";
 }

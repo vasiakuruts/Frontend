@@ -9,13 +9,10 @@ import { useAppDispatch } from "../../utils/hook";
 import { login } from "../../store/slice/auth";
 import { AppErrors } from "../../common/errors";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { LoginSchema, RegisterSchema } from "../../utils/yup";
 
 const AuthRootComponent: React.FC = (): JSX.Element => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [username, setUsername] = useState("");
   const location = useLocation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -23,12 +20,13 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
-  console.log("Errors",errors);
-  
+  } = useForm({
+    resolver: yupResolver(location.pathname === "/login" ? LoginSchema : RegisterSchema),
+  });
+
   const handleSubmitForm = async (data: any) => {
-    console.log("Data",data);
-    
+  console.log(data);
+  
     if (location.pathname === "/login") {
       try {
         const userData = {
@@ -42,18 +40,19 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
         return e;
       }
     } else {
-      if (password === repeatPassword) {
+      if (data.password === data.confirmPassword) {
         try {
           const userData = {
-            firstName,
-            username,
-            email,
-            password,
+            firstName: data.name,
+            username: data.username,
+            email: data.email,
+            password: data.password,
           };
           const newUser = await instance.post("auth/register", userData);
           await dispatch(login(newUser.data));
           navigate("/");
         } catch (e) {
+          console.log(e);
           return e;
         }
       } else {
@@ -74,20 +73,19 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
           margin="auto"
           padding={5}
           borderRadius={5}
-          boxShadow={"5px 5px 10px #ccc"}
+          boxShadow={"5px 5px 10px #202020"}
         >
           {location.pathname === "/login" ? (
             <LoginPage
-             navigate={navigate} register={register} errors={errors}
-             />
+              navigate={navigate}
+              register={register}
+              errors={errors}
+            />
           ) : location.pathname === "/register" ? (
             <RegisterPage
-              setEmail={setEmail}
-              setPassword={setPassword}
-              setRepeatPassword={setRepeatPassword}
-              setFirstName={setFirstName}
-              setUsername={setUsername}
               navigate={navigate}
+              register={register}
+              errors={errors}
             />
           ) : null}
         </Box>

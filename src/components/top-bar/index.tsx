@@ -18,7 +18,6 @@ import {
 } from "@mui/icons-material";
 import { ColorModeContext, tokens } from "../../theme";
 import styled from "./style.module.css";
-import FlexBetween from "../flex-between";
 
 const TopBarComponent = (props: any) => {
   const theme = useTheme();
@@ -36,13 +35,13 @@ const TopBarComponent = (props: any) => {
       }}
     >
       <Toolbar className={styled.toolbar}>
-        <FlexBetween>
+        <Box className={styled.flexBetween}>
           <MenuOutlined
             className={styled.menuIcon}
             onClick={() => setIsOpen(!isOpen)}
           />
           <Typography variant="h3">Welcome Vasyl</Typography>
-        </FlexBetween>
+        </Box>
         <Box display="flex">
           <Grid
             onClick={colorMode.toggleColorMode}
