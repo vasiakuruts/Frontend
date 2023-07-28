@@ -1,7 +1,7 @@
 import React from "react";
-import { Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { IPropsRegister } from "../../../common/types/auth";
-import styled from "../style.module.css";
+import styled from "./style.module.css";
 
 const RegisterPage: React.FC<IPropsRegister> = (
   props: IPropsRegister
@@ -9,7 +9,7 @@ const RegisterPage: React.FC<IPropsRegister> = (
   const { navigate, register, errors } = props;
   return (
     <>
-      <Typography variant="h2" fontFamily="Poppins" textAlign="center">
+      <Typography variant="h2" fontSize={32} textAlign="center">
         Реєстрація
       </Typography>
       <Typography
@@ -20,6 +20,7 @@ const RegisterPage: React.FC<IPropsRegister> = (
       >
         Введіть данні для реєстрації
       </Typography>
+      <Box className={styled.form}>
       <TextField
         error={!!errors.name}
         fullWidth={true}
@@ -75,28 +76,26 @@ const RegisterPage: React.FC<IPropsRegister> = (
         }
         {...register("confirmPassword")}
       />
+      </Box>
       <Button
         className={styled.incitingButton}
         type="submit"
-        sx={{
-          fontFamily: "Poppins",
-          marginTop: 2,
-          marginBottom: 2,
-          width: "60%",
-        }}
         variant="contained"
       >
         Реєстрація
       </Button>
-      <Typography variant="body1" sx={{ fontFamily: "Poppins" }}>
-        У вас є акаунт?
-        <span
-          className={styled.incitingText}
-          onClick={() => navigate("/login")}
-        >
-          Авторизація
-        </span>
-      </Typography>
+      
+      <Box>
+        <Typography variant="body1" >
+          У вас є акаунт?
+          <span
+            className={styled.incitingText}
+            onClick={() => navigate("/login")}
+          >
+            Авторизація
+          </span>
+        </Typography>
+      </Box>
     </>
   );
 };

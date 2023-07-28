@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import styled from "./styles.module.css";
 import {
   Box,
   Drawer,
-  Divider,
   IconButton,
   List,
   ListItem,
@@ -15,16 +14,16 @@ import {
 } from "@mui/material";
 import {
   ChevronLeftOutlined,
-  ChevronRightOutlined,
   LogoutOutlined,
 } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { navMenu } from "../../common/moks/navigate";
 import { tokens } from "../../theme";
 import Logo from "../../assets/images/sidebar/logo.svg";
+import { ISidebarProps } from "../../common/types/sidebar";
 
 
-const SidebarComponent = (props: any) => {
+const SidebarComponent:FC<ISidebarProps> = (props: ISidebarProps):JSX.Element => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [active, setActive] = useState("");
@@ -33,14 +32,14 @@ const SidebarComponent = (props: any) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setActive(pathname.substring(1));
+    setActive(pathname);
   }, [pathname]);
   const renderNavMenu = navMenu.map((element): JSX.Element => {
     return (
       <ListItem key={element.id}>
         <ListItemButton
           onClick={() => navigate(`${element.path}`)}
-          className={styled.navItem}
+          className={active === element.path ? `${styled.navItem} ${styled.active}`: styled.navItem}
           sx={{
             "&:hover": {
               "& .MuiSvgIcon-root": {

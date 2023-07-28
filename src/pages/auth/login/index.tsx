@@ -1,24 +1,20 @@
 import React from "react";
-import { Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { IPropsLogin } from "../../../common/types/auth";
-import styled from "../style.module.css";
+import styled from "./style.module.css";
 
 const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
   const { navigate, register, errors } = props;
   return (
     <>
-      <Typography variant="h2" fontFamily="Poppins" textAlign="center">
+      <Typography variant="h2" textAlign="center" fontSize={32}>
         Авторизація
       </Typography>
-      <Typography
-        variant="body1"
-        marginBottom={3}
-        fontFamily="Poppins"
-        textAlign="center"
-      >
-        Введіть ваш пошту та пароль
+      <Typography variant="body1" marginBottom={3} textAlign="center">
+        Введіть свою пошту та пароль
       </Typography>
-      <TextField
+        <Box className={styled.form}>
+        <TextField
         error={!!errors.email}
         fullWidth={true}
         margin="normal"
@@ -39,20 +35,18 @@ const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
         helperText={errors.password ? `${errors.password.message}` : ""}
         {...register("password")}
       />
+       </Box> 
+      
       <Button
         className={styled.incitingButton}
         type="submit"
-        sx={{
-          fontFamily: "Poppins",
-          marginTop: 2,
-          marginBottom: 2,
-          width: "60%",
-        }}
         variant="contained"
       >
         Увійти
       </Button>
-      <Typography variant="body1" sx={{ fontFamily: "Poppins" }}>
+      
+      <Box>
+      <Typography variant="body1">
         Ще не зареєстровані?
         <span
           className={styled.incitingText}
@@ -61,6 +55,7 @@ const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
           Зареєструйтись
         </span>
       </Typography>
+      </Box>
     </>
   );
 };

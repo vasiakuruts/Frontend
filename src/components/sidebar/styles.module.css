@@ -9,8 +9,7 @@
   padding: 30px 15px;
   cursor: pointer;
 }
-.navItem {
-}
+
 .navList {
   margin-bottom: 55px;
 }
@@ -23,4 +22,9 @@
   display: flex;
   justify-content: "space-between";
   align-items: "center";
+}
+.active{
+  background-color: #1900D5 !important;
+  color:#fff !important;
+  border-radius: 4px !important;
 }

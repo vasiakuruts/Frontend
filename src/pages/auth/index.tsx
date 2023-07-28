@@ -21,12 +21,14 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
     formState: { errors },
     handleSubmit,
   } = useForm({
-    resolver: yupResolver(location.pathname === "/login" ? LoginSchema : RegisterSchema),
+    resolver: yupResolver(
+      location.pathname === "/login" ? LoginSchema : RegisterSchema
+    ),
   });
 
   const handleSubmitForm = async (data: any) => {
-  console.log(data);
-  
+    console.log(data);
+
     if (location.pathname === "/login") {
       try {
         const userData = {
@@ -64,17 +66,7 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
   return (
     <div className={styled.root}>
       <form className={styled.form} onSubmit={handleSubmit(handleSubmitForm)}>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-          maxWidth={640}
-          margin="auto"
-          padding={5}
-          borderRadius={5}
-          boxShadow={"5px 5px 10px #202020"}
-        >
+        <Box className={styled.box}>
           {location.pathname === "/login" ? (
             <LoginPage
               navigate={navigate}
