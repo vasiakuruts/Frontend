@@ -22,31 +22,22 @@ const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
         error={!!errors.email}
         fullWidth={true}
         margin="normal"
-        type="email"
         label="Email"
         variant="outlined"
-        placeholder="Введіть ваш emeil"
+        placeholder="Введіть свій email"
         helperText={errors.email ? `${errors.email.message}` : ""}
-        {...register("email", {
-          required: "Це обов`язкове поле!",
-          pattern: 
-            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        })
-        }
+        {...register("email")}
       />
       <TextField
         error={!!errors.password}
+        type="password"
         fullWidth={true}
         margin="normal"
-        type="password"
         label="Password"
         variant="outlined"
-        placeholder="Введіть ваш password"
+        placeholder="Введіть свій пароль"
         helperText={errors.password ? `${errors.password.message}` : ""}
-        {...register("password", {
-          required: "Це обов`язкове поле!",
-          minLength: 6,
-        })}
+        {...register("password")}
       />
       <Button
         className={styled.incitingButton}

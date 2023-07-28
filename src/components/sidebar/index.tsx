@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styled from "./styles.module.css";
 import {
   Box,
   Drawer,
@@ -15,15 +16,13 @@ import {
 import {
   ChevronLeftOutlined,
   ChevronRightOutlined,
-  ColorizeSharp,
   LogoutOutlined,
 } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
-import FlexBetween from "../flex-between";
 import { navMenu } from "../../common/moks/navigate";
 import { tokens } from "../../theme";
 import Logo from "../../assets/images/sidebar/logo.svg";
-import styled from "./styles.module.css";
+
 
 const SidebarComponent = (props: any) => {
   const theme = useTheme();
@@ -32,7 +31,6 @@ const SidebarComponent = (props: any) => {
   const { isNonMobile, drawerWidth, isOpen, setIsOpen } = props;
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     setActive(pathname.substring(1));
@@ -45,9 +43,9 @@ const SidebarComponent = (props: any) => {
           className={styled.navItem}
           sx={{
             "&:hover": {
-              '& .MuiSvgIcon-root':{
+              "& .MuiSvgIcon-root": {
                 color: "#fff !important",
-              }
+              },
             },
           }}
         >
@@ -84,7 +82,7 @@ const SidebarComponent = (props: any) => {
             }}
           >
             <Box>
-              <FlexBetween>
+              <Box className={styled.flexBetween}>
                 <Box className={styled.brand}>
                   <img src={Logo} alt="logo" />
                   <Typography
@@ -103,19 +101,20 @@ const SidebarComponent = (props: any) => {
                     <ChevronLeftOutlined />
                   </IconButton>
                 )}
-              </FlexBetween>
+              </Box>
             </Box>
             <List className={styled.navList}>{renderNavMenu}</List>
           </Box>
           <Box width="100%">
             <List>
               <ListItem>
-                <ListItemButton className={styled.navItem}
+                <ListItemButton
+                  className={styled.navItem}
                   sx={{
                     "&:hover": {
-                      '& .MuiSvgIcon-root':{
+                      "& .MuiSvgIcon-root": {
                         color: "#fff !important",
-                      }
+                      },
                     },
                   }}
                 >

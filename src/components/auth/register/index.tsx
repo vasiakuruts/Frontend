@@ -6,14 +6,7 @@ import styled from "../style.module.css";
 const RegisterPage: React.FC<IPropsRegister> = (
   props: IPropsRegister
 ): JSX.Element => {
-  const {
-    setEmail,
-    setPassword,
-    setRepeatPassword,
-    setFirstName,
-    setUsername,
-    navigate,
-  } = props;
+  const { navigate, register, errors } = props;
   return (
     <>
       <Typography variant="h2" fontFamily="Poppins" textAlign="center">
@@ -28,47 +21,59 @@ const RegisterPage: React.FC<IPropsRegister> = (
         Введіть данні для реєстрації
       </Typography>
       <TextField
+        error={!!errors.name}
         fullWidth={true}
         margin="normal"
         label="Ім'я"
         variant="outlined"
-        placeholder="Введіть ваше ім'я"
-        onChange={(e) => setFirstName(e.target.value)}
+        placeholder="Введіть свое ім'я"
+        helperText={errors.name ? `${errors.name.message}` : ""}
+        {...register("name")}
       />
       <TextField
+        error={!!errors.username}
         fullWidth={true}
         margin="normal"
         label="Username"
         variant="outlined"
-        placeholder="Введіть ваш username"
-        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Введіть свій username"
+        helperText={errors.username ? `${errors.username.message}` : ""}
+        {...register("username")}
       />
       <TextField
+        error={!!errors.email}
         fullWidth={true}
         margin="normal"
         type="email"
         label="Email"
         variant="outlined"
-        placeholder="Введіть ваш emeil"
-        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Введіть свій emeil"
+        helperText={errors.email ? `${errors.email.message}` : ""}
+        {...register("email")}
       />
       <TextField
+        error={!!errors.password}
         fullWidth={true}
         margin="normal"
         type="password"
         label="Password"
         variant="outlined"
-        placeholder="Введіть ваш password"
-        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Введіть свій password"
+        helperText={errors.password ? `${errors.password.message}` : ""}
+        {...register("password")}
       />
       <TextField
+        error={!!errors.confirmPassword}
         fullWidth={true}
         margin="normal"
         type="password"
         label="Password"
         variant="outlined"
-        placeholder="Повторіть ваш password"
-        onChange={(e) => setRepeatPassword(e.target.value)}
+        placeholder="Повторіть свій password"
+        helperText={
+          errors.confirmPassword ? `${errors.confirmPassword.message}` : ""
+        }
+        {...register("confirmPassword")}
       />
       <Button
         className={styled.incitingButton}

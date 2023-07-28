@@ -1,22 +1,26 @@
-.navBlock{
-   width: 100%;
+.navBlock {
+  width: 100%;
 }
 
-.brand{
-   display: flex;
-   align-items: center;
-   gap: 10px;
-   padding: 30px 15px;
-   cursor: pointer;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 30px 15px;
+  cursor: pointer;
 }
-.navItem{
-
+.navItem {
 }
-.navList{
-   margin-bottom: 55px;
+.navList {
+  margin-bottom: 55px;
 }
-.navItem:hover{
-   background-color: #1900D5 !important;
-   color: #fff;
-   border-radius: 4px;
+.navItem:hover {
+  background-color: #1900d5 !important;
+  color: #fff;
+  border-radius: 4px;
+}
+.flexBetween {
+  display: flex;
+  justify-content: "space-between";
+  align-items: "center";
 }
