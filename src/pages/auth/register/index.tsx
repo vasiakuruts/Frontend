@@ -1,12 +1,14 @@
 import React from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import { IPropsRegister } from "../../../common/types/auth";
 import styled from "./style.module.css";
+import { LoadingButton } from "@mui/lab";
 
 const RegisterPage: React.FC<IPropsRegister> = (
   props: IPropsRegister
 ): JSX.Element => {
-  const { navigate, register, errors } = props;
+  const { navigate, register, errors, loading} = props;
+  console.log(register);
   return (
     <>
       <Typography variant="h2" fontSize={32} textAlign="center">
@@ -77,13 +79,14 @@ const RegisterPage: React.FC<IPropsRegister> = (
         {...register("confirmPassword")}
       />
       </Box>
-      <Button
+      <LoadingButton
+        loading={loading}
         className={styled.incitingButton}
         type="submit"
         variant="contained"
       >
         Реєстрація
-      </Button>
+      </LoadingButton>
       
       <Box>
         <Typography variant="body1" >

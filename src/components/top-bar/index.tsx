@@ -41,7 +41,7 @@ const TopBarComponent:FC<ITopBarProps> = (props:ITopBarProps): JSX.Element => {
             className={styled.menuIcon}
             onClick={() => setIsOpen(!isOpen)}
           />
-          <Typography variant="h3">Welcome Vasyl</Typography>
+          <Typography variant="h3">Welcome {sessionStorage.getItem('name')}</Typography>
         </Box>
         <Box display="flex">
           <Grid
