@@ -1,0 +1,33 @@
+.root {
+  flex-grow: 1;
+  padding: 32px;
+}
+.topCardItem {
+  padding: 16px 20px;
+  min-height: 185px;
+  border-radius: 12px;
+}
+.assetName {
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 30px;
+  text-transform: capitalize;
+}
+.itemDetails {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+.cardPrice {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 48px;
+
+}
+.cardCapitalize {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+}
