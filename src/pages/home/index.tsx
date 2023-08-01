@@ -1,11 +1,12 @@
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import React, { FC, useCallback, useEffect, useMemo, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../../utils/hook";
 import { getFavoriteAssets } from "../../store/thunks/assets";
 import { Grid, Box, useTheme } from "@mui/material";
 import styled from "./styles.module.css";
 import { tokens } from "../../theme";
+import AreaChart from "../../components/charts/area-chart";
 
-const Home = () => {
+const Home: FC = (): JSX.Element  => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const favoriteAssets: any[] = useAppSelector(
@@ -16,7 +17,10 @@ const Home = () => {
   const fetchDataRef = useRef(false);
 
   const favoriteAssetName = useMemo(() => ["bitcoin", "ethereum"], []);
-  const filteredArray = favoriteAssets.filter((value, index, self) => index === self.findIndex((t) => t.name === value.name))
+  const filteredArray = favoriteAssets.filter(
+    (value, index, self) =>
+      index === self.findIndex((t) => t.name === value.name)
+  );
 
   const fetchData = useCallback(
     (data: string[]) => {
@@ -34,10 +38,12 @@ const Home = () => {
   }, [favoriteAssetName, fetchData]);
 
   const renderFavoriteBlock = filteredArray.map((element: any) => {
+    console.log("Element", element);
+    
     const currentPrice = element.data.prices[0];
     const currentCap = element.data.market_caps[0];
     return (
-      <Grid item lg={6} sm={6} xs={12}>
+      <Grid item lg={6} sm={6} xs={12} key={element.name}>
         <Grid
           container
           className={styled.topCardItem}
@@ -57,14 +63,14 @@ const Home = () => {
               </h3>
               <Box
                 className={styled.cardCapitalize}
-                sx={{color: colors.secondary.DEFAULT }}
+                sx={{ color: colors.secondary.DEFAULT }}
               >
                 ${currentCap[1].toFixed(0)}
               </Box>
             </div>
           </Grid>
           <Grid item lg={6} sm={6} xs={12}>
-            <h5>Chart</h5>
+            <AreaChart data={element.data.prices} />
           </Grid>
         </Grid>
       </Grid>
