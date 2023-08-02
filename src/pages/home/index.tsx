@@ -5,8 +5,10 @@ import { Grid, Box, useTheme } from "@mui/material";
 import styled from "./styles.module.css";
 import { tokens } from "../../theme";
 import AreaChart from "../../components/charts/area-chart";
+import TrendUp from "../../assets/images/chart/trend-up.svg";
+import TrendDown from "../../assets/images/chart/trend-down.svg";
 
-const Home: FC = (): JSX.Element  => {
+const Home: FC = (): JSX.Element => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const favoriteAssets: any[] = useAppSelector(
@@ -39,9 +41,17 @@ const Home: FC = (): JSX.Element  => {
 
   const renderFavoriteBlock = filteredArray.map((element: any) => {
     console.log("Element", element);
-    
-    const currentPrice = element.data.prices[0];
-    const currentCap = element.data.market_caps[0];
+
+    const currentPrice = element.singleAsset.map(
+      (element: any) => element.current_price
+    );
+    const currentCap = element.singleAsset.map(
+      (element: any) => element.market_cap
+    );
+    const changePrice = element.singleAsset.map(
+      (element: any) => element.price_change_percentage_24h
+    );
+
     return (
       <Grid item lg={6} sm={6} xs={12} key={element.name}>
         <Grid
@@ -58,19 +68,26 @@ const Home: FC = (): JSX.Element  => {
           <Grid item lg={6} sm={6} xs={12}>
             <h3 className={styled.assetName}>{element.name}</h3>
             <div className={styled.itemDetails}>
-              <h3 className={styled.cardPrice}>
-                ${currentPrice[1].toFixed(2)}
-              </h3>
+              <h3 className={styled.cardPrice}>${currentPrice}</h3>
               <Box
-                className={styled.cardCapitalize}
-                sx={{ color: colors.secondary.DEFAULT }}
-              >
-                ${currentCap[1].toFixed(0)}
+                className={
+                  changePrice > 0 
+                  ? `${styled.cardTrend} ${styled.trendUp}`
+                  : `${styled.cardTrend} ${styled.trendDown}`
+                }
+                sx={{ color: colors.secondary.DEFAULT }}>
+                  {changePrice > 0 ?(
+                    <img src={TrendUp} alt="TrendUp"/>
+                  ) :
+                  (
+                    <img src={TrendDown} alt="TrendDown"/>
+                  )}
+                <span>{Number(changePrice).toFixed(1)} %</span>
               </Box>
             </div>
           </Grid>
           <Grid item lg={6} sm={6} xs={12}>
-            <AreaChart data={element.data.prices} />
+            <AreaChart data={element.data} />
           </Grid>
         </Grid>
       </Grid>
