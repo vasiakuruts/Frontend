@@ -18,7 +18,7 @@
   height: 100%;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 20px;
+  padding-bottom: 35px;
 }
 .cardPrice {
   font-size: 32px;
@@ -26,8 +26,18 @@
   line-height: 48px;
 
 }
-.cardCapitalize {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 21px;
+.cardTrend {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+}
+.trendUp{
+  background-color: #A9FFA7;
+  color: #037400;
+}
+.trendDown{
+  background-color: #FFA7A7;
+  color: #740000;
 }
