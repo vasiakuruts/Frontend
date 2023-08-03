@@ -7,11 +7,13 @@ import { tokens } from "../../theme";
 import AreaChart from "../../components/charts/area-chart";
 import TrendUp from "../../assets/images/chart/trend-up.svg";
 import TrendDown from "../../assets/images/chart/trend-down.svg";
+import { LineChart } from "../../components/charts/line-chart";
+import { IChartData } from "../../common/types/assets";
 
 const Home: FC = (): JSX.Element => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const favoriteAssets: any[] = useAppSelector(
+  const favoriteAssets: IChartData[] = useAppSelector(
     (state) => state.assets.favoriteAssets
   );
   const dispatch = useAppDispatch();
@@ -71,23 +73,23 @@ const Home: FC = (): JSX.Element => {
               <h3 className={styled.cardPrice}>${currentPrice}</h3>
               <Box
                 className={
-                  changePrice > 0 
-                  ? `${styled.cardTrend} ${styled.trendUp}`
-                  : `${styled.cardTrend} ${styled.trendDown}`
+                  changePrice > 0
+                    ? `${styled.cardTrend} ${styled.trendUp}`
+                    : `${styled.cardTrend} ${styled.trendDown}`
                 }
-                sx={{ color: colors.secondary.DEFAULT }}>
-                  {changePrice > 0 ?(
-                    <img src={TrendUp} alt="TrendUp"/>
-                  ) :
-                  (
-                    <img src={TrendDown} alt="TrendDown"/>
-                  )}
+                sx={{ color: colors.secondary.DEFAULT }}
+              >
+                {changePrice > 0 ? (
+                  <img src={TrendUp} alt="TrendUp" />
+                ) : (
+                  <img src={TrendDown} alt="TrendDown" />
+                )}
                 <span>{Number(changePrice).toFixed(1)} %</span>
               </Box>
             </div>
           </Grid>
           <Grid item lg={6} sm={6} xs={12}>
-            <AreaChart data={element.data} />
+            <AreaChart data={element.price_chart_data} />
           </Grid>
         </Grid>
       </Grid>
@@ -95,8 +97,23 @@ const Home: FC = (): JSX.Element => {
   });
   return (
     <Box className={styled.root}>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} className={styled.areaChart}>
         {renderFavoriteBlock}
+      </Grid>
+      <Grid
+        container
+        className={styled.lineChartBlock}
+        sx={{
+          backgroundColor:
+            theme.palette.mode === "light"
+              ? colors.primary.DEFAULT
+              : colors.primary[600],
+          border: `1px solid ${colors.borderColor}`,
+        }}
+      >
+        <Grid item lg={12} sm={12} xs={12}>
+          {filteredArray.length && <LineChart data={filteredArray} />}
+        </Grid>
       </Grid>
     </Box>
   );
