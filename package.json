@@ -20,6 +20,7 @@
     "@types/yup": "^0.32.0",
     "axios": "^1.4.0",
     "chart.js": "^4.3.2",
+    "faker": "5.5.3",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -58,6 +59,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
+    "@types/faker": "^6.6.9",
     "@types/highcharts": "^7.0.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",

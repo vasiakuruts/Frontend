@@ -24,7 +24,6 @@
   font-size: 32px;
   font-weight: 700;
   line-height: 48px;
-
 }
 .cardTrend {
   width: 20%;
@@ -33,11 +32,19 @@
   padding: 2px;
   border-radius: 4px;
 }
-.trendUp{
-  background-color: #A9FFA7;
+.trendUp {
+  background-color: #a9ffa7;
   color: #037400;
 }
-.trendDown{
-  background-color: #FFA7A7;
+.trendDown {
+  background-color: #ffa7a7;
   color: #740000;
+}
+.areaChart {
+  margin-bottom: 32px;
+}
+.lineChartBlock {
+  padding: 16px 20px;
+  min-height: 270px;
+  border-radius: 12px;
 }
