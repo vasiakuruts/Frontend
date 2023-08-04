@@ -2,6 +2,9 @@
   flex-grow: 1;
   padding: 32px;
 }
+.areaChart {
+  margin-bottom: 32px;
+}
 .topCardItem {
   padding: 16px 20px;
   min-height: 185px;
@@ -25,8 +28,8 @@
   font-weight: 700;
   line-height: 48px;
 }
-.cardTrend {
-  width: 20%;
+.priceTrend {
+  width: 80px;
   display: flex;
   align-items: center;
   padding: 2px;
@@ -40,11 +43,16 @@
   background-color: #ffa7a7;
   color: #740000;
 }
-.areaChart {
-  margin-bottom: 32px;
-}
+
 .lineChartBlock {
   padding: 16px 20px;
+  margin-bottom: 32px;
+  min-height: 270px;
+  border-radius: 12px;
+}
+.topPriceRoot {
+  padding: 16px 20px;
+  margin-bottom: 32px;
   min-height: 270px;
   border-radius: 12px;
 }
