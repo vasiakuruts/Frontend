@@ -70,42 +70,6 @@ const TopBarComponent:FC<ITopBarProps> = (props:ITopBarProps): JSX.Element => {
         </Box>
       </Toolbar>
     </AppBar>
-    // <Box
-    //   className={styled.root}
-    //   sx={{ backgroundColor: `${colors.primary.DEFAULT}`,
-    //         borderBottom: `1px solid ${colors.borderColor}` }}
-    // >
-    //   <Grid>Welcome Vasyl</Grid>
-    // <Box display="flex">
-    //   <Grid
-    //     onClick={colorMode.toggleColorMode}
-    //     className={styled.iconBlock}
-    //     sx={{
-    //       borderRight: `2px solid ${colors.borderColor}`,
-    //     }}
-    //   >
-    //     <IconButton className={styled.themeIcon}>
-    //       {theme.palette.mode === "dark" ? (
-    //         <DarlModeIcon />
-    //       ) : (
-    //         <LightModeIcon />
-    //       )}
-    //     </IconButton>
-    //     <IconButton>
-    //       <NotificationsNoneIcon />
-    //     </IconButton>
-    //   </Grid>
-    //   <Grid
-    //     className={styled.searchInputBlock}
-    //     sx={{ backgroundColor: `${colors.primary[600]}` }}
-    //   >
-    //     <IconButton className={styled.searchIcon}>
-    //       <SearchIcon />
-    //     </IconButton>
-    //     <InputBase className={styled.searchInput} placeholder="Пошук" />
-    //   </Grid>
-    // </Box>
-    // </Box>
   );
 };
 
