@@ -1,4 +1,5 @@
 .root {
+  position: static;
   box-shadow: none !important;
 }
 .toolbar {

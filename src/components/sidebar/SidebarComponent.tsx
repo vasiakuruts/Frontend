@@ -11,7 +11,6 @@ import {
   ListItemText,
   Typography,
   useTheme,
-
 } from "@mui/material";
 import { ChevronLeftOutlined, LogoutOutlined } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -107,7 +106,13 @@ export const SidebarComponent: FC<ISidebarProps> = (
                 )}
               </Box>
             </Box>
-            <List>{!isNonMobile && <SearchBarComponent />}</List>
+            <List>
+              {!isNonMobile && (
+                <ListItem>
+                  <SearchBarComponent />
+                </ListItem>
+              )}
+            </List>
             <List className={styled.navList}>{renderNavMenu}</List>
           </Box>
           <Box width="100%">

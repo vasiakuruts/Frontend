@@ -16,7 +16,7 @@ export const LayoutComponent: FC = (): JSX.Element => {
     </>
   ) : (
     <Box
-      display={!isNonMobile ? "flex" : "block"}
+      display={isNonMobile ? "flex" : "block"}
       justifyContent="space-between"
       width="100%"
       height="100%"

@@ -4,7 +4,9 @@ import { IPropsLogin } from "../../../common/types/auth";
 import styled from "./style.module.css";
 import { LoadingButton } from "@mui/lab";
 
-const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
+export const LoginPage: React.FC<IPropsLogin> = (
+  props: IPropsLogin
+): JSX.Element => {
   const { navigate, register, errors, loading } = props;
   console.log(register);
   return (
@@ -62,5 +64,4 @@ const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
     </>
   );
 };
-
 export default LoginPage;

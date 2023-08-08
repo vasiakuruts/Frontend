@@ -39,7 +39,7 @@ export const TopBarComponent: FC<ITopBarProps> = (
                 className={styled.menuIcon}
                 onClick={() => setIsOpen(!isOpen)}
               />
-              <Typography variant="h3">
+              <Typography variant="h3" >
                 Welcome {sessionStorage.getItem("name")}
               </Typography>
             </Box>
