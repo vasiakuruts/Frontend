@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import LoginPage from "./login";
-import RegisterPage from "./register";
+import LoginPage from "./login/LoginPage";
+import RegisterPage from "./register/RegisterPage";
 import styled from "./style.module.css";
 import { Box } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../utils/hook";
@@ -11,7 +11,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema, RegisterSchema } from "../../utils/yup";
 import { loginUser, registerUser } from "../../store/thunks/auth";
 
-const AuthRootComponent: React.FC = (): JSX.Element => {
+export const AuthRootComponent: React.FC = (): JSX.Element => {
   const location = useLocation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -27,7 +27,6 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
   const loading = useAppSelector((state) => state.auth.isLoading);
 
   const handleSubmitForm = async (data: any) => {
-    console.log(data);
 
     if (location.pathname === "/login") {
       try {
@@ -82,5 +81,4 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
     </div>
   );
 };
-
 export default AuthRootComponent;

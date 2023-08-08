@@ -1,0 +1,3 @@
+export { AuthRootComponent } from "./AuthRootComponent";
+
+

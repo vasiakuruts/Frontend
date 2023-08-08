@@ -4,14 +4,14 @@ import { getFavoriteAssets, getTopPriceData } from "../../store/thunks/assets";
 import { Grid, Box, useTheme, Typography } from "@mui/material";
 import styled from "./styles.module.css";
 import { tokens } from "../../theme";
-import AreaChart from "../../components/charts/area-chart";
+import AreaChart from "../../components/charts/area-chart/AreaChartComponent";
 import TrendUp from "../../assets/images/chart/trend-up.svg";
 import TrendDown from "../../assets/images/chart/trend-down.svg";
-import { LineChart } from "../../components/charts/line-chart";
+import { LineChartComponent } from "../../components/charts/line-chart/LineChartComponent";
 import { IChartData, ISingleAsset } from "../../common/types/assets";
 import TopPriceComponent from "../../components/top-prace/TopPriceComponent";
 
-const Home: FC = (): JSX.Element => {
+export const HomePage: FC = (): JSX.Element => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const favoriteAssets: IChartData[] = useAppSelector(
@@ -61,7 +61,7 @@ const Home: FC = (): JSX.Element => {
     });
 
     return (
-      <Grid item lg={6} sm={6} xs={12} key={element.name}>
+      <Grid item xs={12} sm={6} lg={6} key={element.name}>
         <Grid
           container
           className={styled.topCardItem}
@@ -73,7 +73,7 @@ const Home: FC = (): JSX.Element => {
             border: `1px solid ${colors.borderColor}`,
           }}
         >
-          <Grid item lg={6} sm={6} xs={12}>
+          <Grid item xs={12} sm={6} lg={6}>
             <h3 className={styled.assetName}>{element.name}</h3>
             <div className={styled.itemDetails}>
               <h3 className={styled.cardPrice}>${currentPrice}</h3>
@@ -96,7 +96,7 @@ const Home: FC = (): JSX.Element => {
               </Box>
             </div>
           </Grid>
-          <Grid item lg={6} sm={6} xs={12}>
+          <Grid item xs={12} sm={6} lg={6}>
             <AreaChart data={element.price_chart_data} />
           </Grid>
         </Grid>
@@ -119,8 +119,8 @@ const Home: FC = (): JSX.Element => {
           border: `1px solid ${colors.borderColor}`,
         }}
       >
-        <Grid item lg={12} sm={12} xs={12}>
-          {filteredArray.length && <LineChart data={filteredArray} />}
+        <Grid item xs={12} sm={12} lg={12}>
+          {filteredArray.length && <LineChartComponent data={filteredArray} />}
         </Grid>
       </Grid>
       <Grid
@@ -139,7 +139,7 @@ const Home: FC = (): JSX.Element => {
           },
         }}
       >
-        <Grid item lg={12} sm={12} xs={12}>
+        <Grid item xs={12} sm={12} lg={12}>
           {filteredAssetsArray.length && (
             <TopPriceComponent assets={filteredAssetsArray.slice(0, 6)} />
           )}
@@ -148,5 +148,4 @@ const Home: FC = (): JSX.Element => {
     </Box>
   );
 };
-
-export default Home;
+export default HomePage;
