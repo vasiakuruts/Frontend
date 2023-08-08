@@ -1,0 +1,12 @@
+
+.searchInputBlock {
+  display: flex;
+  max-height: 45px;
+  border-radius: 8px;
+}
+.searchIcon:hover {
+  background-color: transparent !important;
+}
+.searchInput {
+  padding: 18px 12px;
+}

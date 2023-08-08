@@ -9,25 +9,6 @@
   margin-right: 20px;
   cursor: pointer;
 }
-.themeIcon {
-  margin-right: 20px !important;
-}
-.iconBlock {
-  padding-right: 35px;
-  padding-top: 10px;
-}
-.searchInputBlock {
-  display: flex;
-  max-height: 45px;
-  border-radius: 8px;
-  margin-left: 28px;
-}
-.searchIcon:hover {
-  background-color: transparent !important;
-}
-.searchInput {
-  padding: 12px 18px;
-}
 .flexBetween {
   display: flex;
   justify-content: "space-between";

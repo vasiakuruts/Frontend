@@ -9,7 +9,7 @@ import TrendUp from "../../assets/images/chart/trend-up.svg";
 import TrendDown from "../../assets/images/chart/trend-down.svg";
 import { LineChart } from "../../components/charts/line-chart";
 import { IChartData, ISingleAsset } from "../../common/types/assets";
-import TopPriceComponent from "../../components/top-prace";
+import TopPriceComponent from "../../components/top-prace/TopPriceComponent";
 
 const Home: FC = (): JSX.Element => {
   const theme = useTheme();
