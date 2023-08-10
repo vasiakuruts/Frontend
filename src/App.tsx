@@ -26,7 +26,7 @@ function App() {
                 <Route path="/watchlist" element={<WatchlistPage />} />
                 <Route path="/news" element={<NewsPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
-                <Route path="/single/:id"  element={<SingleAssetPage />} />
+                <Route path="/single/:id" element={<SingleAssetPage />} />
               </Route>
               <Route path="login" element={<AuthRootComponent />} />
               <Route path="register" element={<AuthRootComponent />} />

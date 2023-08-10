@@ -16,7 +16,7 @@ export interface ISingleAsset {
   id: string;
   symbol: string;
   name: string;
-  imege: string;
+  image: string;
   current_price: number;
   market_cap: any;
   market_cap_rank: number;
