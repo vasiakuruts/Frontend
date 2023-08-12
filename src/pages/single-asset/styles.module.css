@@ -1,8 +1,59 @@
-.flexBetween{
-   display: flex;
-   justify-content: flex-start;
-   align-items: center;
+.flexBetween {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
-.root{
-   
+.root {
+  padding: 5;
+  align-items: center;
+}
+.assetName {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 !important;
+}
+.card {
+  display: flex;
+  justify-content: center;
+}
+.cardItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 16px;
+  width: 100%;
+  max-width: 500px;
+  min-height: 185px;
+  margin-bottom: 25px !important;
+  border-radius: 12px;
+}
+.assetIcon {
+  margin-right: 2px;
+}
+.assetSymbol {
+  font-size: 20px;
+  font-weight: 600;
+}
+.cardTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 2px;
+}
+.assetPrice {
+  font-size: 20px;
+}
+.assetPriceDetail {
+  font-size: 20px;
+}
+.trendUp {
+  color: #a9ffa7;
+}
+.trendDown {
+  color: #ffa7a7;
+}
+.cardButtonBlock {
+  justify-content: center;
+}
+.button {
+  margin-right: 20px;
 }
