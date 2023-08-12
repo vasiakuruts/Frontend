@@ -14,6 +14,14 @@ import TopPriceComponent from "../../components/top-prace/TopPriceComponent";
 export const HomePage: FC = (): JSX.Element => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const theTheme = {
+    backgroundColor:
+      theme.palette.mode === "light"
+        ? colors.primary.DEFAULT
+        : colors.primary[600],
+    border: `1px solid ${colors.borderColor}`,
+  };
+
   const favoriteAssets: IChartData[] = useAppSelector(
     (state) => state.assets.favoriteAssets
   );
@@ -65,13 +73,7 @@ export const HomePage: FC = (): JSX.Element => {
         <Grid
           container
           className={styled.topCardItem}
-          sx={{
-            backgroundColor:
-              theme.palette.mode === "light"
-                ? colors.primary.DEFAULT
-                : colors.primary[600],
-            border: `1px solid ${colors.borderColor}`,
-          }}
+          sx={theTheme}
         >
           <Grid item xs={12} sm={6} lg={6}>
             <h3 className={styled.assetName}>{element.name}</h3>
@@ -111,13 +113,7 @@ export const HomePage: FC = (): JSX.Element => {
       <Grid
         container
         className={styled.lineChartBlock}
-        sx={{
-          backgroundColor:
-            theme.palette.mode === "light"
-              ? colors.primary.DEFAULT
-              : colors.primary[600],
-          border: `1px solid ${colors.borderColor}`,
-        }}
+        sx={theTheme}
       >
         <Grid item xs={12} sm={12} lg={12}>
           {filteredArray.length && <LineChartComponent data={filteredArray} />}
