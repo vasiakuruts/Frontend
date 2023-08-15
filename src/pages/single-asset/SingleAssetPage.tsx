@@ -1,16 +1,31 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ISingleAsset } from "../../common/types/assets";
-import { useAppSelector } from "../../utils/hook";
-import { Avatar, Box, Button, Grid, Typography, useTheme } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "../../utils/hook";
+import {
+  Alert,
+  AlertColor,
+  Avatar,
+  Box,
+  Button,
+  Grid,
+  Snackbar,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import styled from "./styles.module.css";
 import { tokens } from "../../theme";
+import { createWatchListRecord } from "../../store/thunks/assets";
 
 export const SingleAssetPage: FC = (): JSX.Element => {
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
+  const [severity, setSeverity] = useState<AlertColor>("success");
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
   const { id } = useParams();
+  const dispatch = useAppDispatch();
   const assetsArray: ISingleAsset[] = useAppSelector(
     (state) => state.assets.assets
   );
@@ -22,6 +37,33 @@ export const SingleAssetPage: FC = (): JSX.Element => {
     border: `1px solid ${colors.borderColor}`,
   };
   const asset = assetsArray.find((element) => element.name === (id as string));
+
+  const hendleCreateRecord = () => {
+    try {
+      const data = {
+        name: "",
+        assetId: "",
+      };
+      if (asset) {
+        data.name = asset.name;
+        data.assetId = asset.id;
+      }
+      dispatch(createWatchListRecord(data));
+      setError(false);
+      setSeverity("success");
+      setOpen(true);
+      setTimeout(() => {
+        setOpen(false);
+      }, 2000);
+    } catch (e) {
+      setError(true);
+      setSeverity("error");
+      setOpen(true);
+      setTimeout(() => {
+        setOpen(false);
+      }, 2000);
+    }
+  };
 
   return (
     <>
@@ -102,11 +144,16 @@ export const SingleAssetPage: FC = (): JSX.Element => {
               color="success"
               variant="outlined"
               className={styled.button}
-              onClick={() => navigate(-1)}
+              onClick={hendleCreateRecord}
             >
               Додати в обране
             </Button>
           </Grid>
+          <Snackbar open={open} autoHideDuration={6000}>
+            <Alert severity={severity} sx={{ width: "100%" }}>
+              {!error ? "Success!" : "Ooops"}
+            </Alert>
+          </Snackbar>
         </Grid>
       )}
     </>

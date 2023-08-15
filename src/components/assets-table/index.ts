@@ -1,0 +1,1 @@
+export { AssetsTableComponent } from "./AssetsTableComponent";

@@ -1,0 +1,15 @@
+.root {
+  padding: 10px 20px;
+}
+.watchlistHeading {
+  text-align: center;
+}
+.heading {
+  margin: 25px 0 !important;
+}
+.assetsTableBlock {
+  padding: 20px 16px;
+  margin-bottom: 32px;
+  min-height: 270px;
+  border-radius: 12px;
+}
