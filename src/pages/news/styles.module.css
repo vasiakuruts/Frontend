@@ -1,0 +1,19 @@
+.root {
+  padding: 32px;
+}
+.blockTitle {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.newsBlock {
+  padding: 20px 16px;
+  margin-bottom: 32px;
+  min-height: 270;
+  border-radius: 12px;
+}
+.newsTitle {
+  margin-bottom: 32px;
+}
+.readMore {
+  text-align: center;
+}

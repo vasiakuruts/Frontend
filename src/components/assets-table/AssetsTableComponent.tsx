@@ -7,6 +7,7 @@ import {
   TableCell,
   TableBody,
   Paper,
+  Avatar,
 } from "@mui/material";
 import styled from "./style.module.css";
 
@@ -18,6 +19,7 @@ export const AssetsTableComponent = (props: any) => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell>Значок</TableCell>
             <TableCell>Назва</TableCell>
             <TableCell align="right">Ціна</TableCell>
             <TableCell align="right">Зміни в ($)</TableCell>
@@ -30,6 +32,9 @@ export const AssetsTableComponent = (props: any) => {
               key={element.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
+              <TableCell>
+                <Avatar src={element.image} />
+              </TableCell>
               <TableCell component="th" scope="row">
                 {element.name}
               </TableCell>
