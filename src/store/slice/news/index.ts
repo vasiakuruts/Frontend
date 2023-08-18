@@ -1,6 +1,4 @@
-import { red } from "@mui/material/colors";
 import { createSlice } from "@reduxjs/toolkit";
-import React from "react";
 import { getNews } from "../../thunks/news";
 
 const initialState: any = {
