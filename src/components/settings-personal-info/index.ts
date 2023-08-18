@@ -1,0 +1,1 @@
+export { SettingsPersonalInfoComponent } from "./SettingsPersonalInfoComponent";
