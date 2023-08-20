@@ -6,8 +6,16 @@
 }
 .inputField {
   width: 25%;
-  margin-bottom: 5px !important;
+  margin-bottom: 15px !important;
 }
 .button {
   margin-top: 32px;
+}
+.buttonLoading {
+  border-radius: 4px;
+  background-color: #1900d5 !important;
+  box-shadow: 0px 1px 7px #332a76 !important;
+  padding: 10px 20px !important;
+  max-width: 300px;
+  color: #fff !important;
 }
