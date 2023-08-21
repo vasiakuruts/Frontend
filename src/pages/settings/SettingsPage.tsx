@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Box, Grid, Tab, Tabs, useTheme } from "@mui/material";
 import { TabPanelComponent } from "../../components/tab-panel";
 import { tabProps } from "../../utils/helpers";
@@ -10,7 +10,7 @@ import { getPublicUser } from "../../store/thunks/auth";
 import { ChangePasswordComponent } from "../../components/change-password";
 import { DeleteUserComponent } from "../../components/delete-user";
 
-export const SettingsPage = () => {
+export const SettingsPage: FC = (): JSX.Element => {
   const [value, setValue] = useState(0);
   const dispatch = useAppDispatch();
 

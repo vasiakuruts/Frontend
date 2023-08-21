@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../utils/hook";
 import styled from "./styles.module.css";
 import { Box, Grid, TextField, useTheme } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { tokens } from "../../theme";
-import { updateUserInfo } from "../../store/thunks/auth";
+import { getPublicUser, updateUserInfo } from "../../store/thunks/auth";
 
-export const SettingsPersonalInfoComponent = () => {
+export const SettingsPersonalInfoComponent: FC = (): JSX.Element => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const dispatch = useAppDispatch();
@@ -31,6 +31,7 @@ export const SettingsPersonalInfoComponent = () => {
       email: email,
     };
     dispatch(updateUserInfo(data));
+    dispatch(getPublicUser());
   };
   return (
     <Grid

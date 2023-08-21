@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { useAppDispatch } from "../../utils/hook";
 import styled from "./styles.module.css";
 import { Box, Grid, TextField, useTheme } from "@mui/material";
@@ -6,14 +6,14 @@ import { LoadingButton } from "@mui/lab";
 import { tokens } from "../../theme";
 import { updateUserPassword } from "../../store/thunks/auth";
 
-export const ChangePasswordComponent = () => {
+export const ChangePasswordComponent: FC = (): JSX.Element => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const dispatch = useAppDispatch();
   const [newPassword, setNewPassword] = useState("");
   const [oldPassword, setOldPassword] = useState("");
 
-  const hendleChangePassword = (e: any) => {
+  const hendleChangePassword = (e: React.SyntheticEvent) => {
     e.preventDefault();
     const data = {
       oldPassword,

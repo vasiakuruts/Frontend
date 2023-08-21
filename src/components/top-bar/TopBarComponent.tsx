@@ -13,6 +13,7 @@ import styled from "./style.module.css";
 import { ITopBarProps } from "../../common/types/top-bar";
 import ThemeSwitcherComponent from "../theme-switcher/ThemeSwitcherComponent";
 import SearchBarComponent from "../search-bar/SearchBarComponent";
+import { useAppSelector } from "../../utils/hook";
 
 export const TopBarComponent: FC<ITopBarProps> = (
   props: ITopBarProps
@@ -21,6 +22,7 @@ export const TopBarComponent: FC<ITopBarProps> = (
   const colors = tokens(theme.palette.mode);
 
   const { isOpen, setIsOpen, isNonMobile } = props;
+  const { user } = useAppSelector((state) => state.auth.user);
 
   return (
     <AppBar
@@ -39,8 +41,8 @@ export const TopBarComponent: FC<ITopBarProps> = (
                 className={styled.menuIcon}
                 onClick={() => setIsOpen(!isOpen)}
               />
-              <Typography variant="h3" >
-                Welcome {sessionStorage.getItem("name")}
+              <Typography variant="h3">
+                Welcome {user ? user.firstName : ""}
               </Typography>
             </Box>
           </Grid>
