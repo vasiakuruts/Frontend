@@ -1,0 +1,1 @@
+export { ChangePasswordComponent } from "./ChangePasswordComponent";
