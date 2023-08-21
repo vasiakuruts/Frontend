@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../utils/hook";
 import { getWatchlistElements } from "../../store/thunks/watchlist";
 import { getTopPriceData } from "../../store/thunks/assets";
@@ -7,7 +7,7 @@ import { Grid, Typography, useTheme } from "@mui/material";
 import styled from "./styles.module.css";
 import { tokens } from "../../theme";
 
-export const WatchlistPage = () => {
+export const WatchlistPage: FC = (): JSX.Element => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const dispatch = useAppDispatch();

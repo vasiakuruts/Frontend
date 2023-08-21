@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   TableContainer,
   Table,
@@ -10,8 +10,11 @@ import {
   Avatar,
 } from "@mui/material";
 import styled from "./style.module.css";
+import { ISingleAsset, ITablePriceData } from "../../common/types/assets";
 
-export const AssetsTableComponent = (props: any) => {
+export const AssetsTableComponent: FC<ITablePriceData> = (
+  props: ITablePriceData
+): JSX.Element => {
   const { assets } = props;
 
   return (
@@ -27,7 +30,7 @@ export const AssetsTableComponent = (props: any) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {assets.map((element: any) => (
+          {assets.map((element: ISingleAsset) => (
             <TableRow
               key={element.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

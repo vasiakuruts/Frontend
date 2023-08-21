@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../utils/hook";
 import { getNews } from "../../store/thunks/news";
 import { Box, Grid, Link, Typography, useTheme } from "@mui/material";
 import styled from "./styles.module.css";
 import { tokens } from "../../theme";
 
-export const NewsPage = () => {
+export const NewsPage: FC = (): JSX.Element => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const dispatch = useAppDispatch();
