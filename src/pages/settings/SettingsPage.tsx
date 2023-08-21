@@ -7,6 +7,8 @@ import { tokens } from "../../theme";
 import { SettingsPersonalInfoComponent } from "../../components/settings-personal-info";
 import { useAppDispatch } from "../../utils/hook";
 import { getPublicUser } from "../../store/thunks/auth";
+import { ChangePasswordComponent } from "../../components/change-password";
+import { DeleteUserComponent } from "../../components/delete-user";
 
 export const SettingsPage = () => {
   const [value, setValue] = useState(0);
@@ -45,10 +47,10 @@ export const SettingsPage = () => {
         <SettingsPersonalInfoComponent />
       </TabPanelComponent>
       <TabPanelComponent value={value} index={1}>
-        Item Two
+        <ChangePasswordComponent />
       </TabPanelComponent>
       <TabPanelComponent value={value} index={2}>
-        Item Three
+        <DeleteUserComponent />
       </TabPanelComponent>
     </Grid>
   );

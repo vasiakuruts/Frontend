@@ -1,0 +1,1 @@
+export { DeleteUserComponent } from "./DeleteUserComponent";
