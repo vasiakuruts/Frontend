@@ -34,6 +34,12 @@ export const SidebarComponent: FC<ISidebarProps> = (
   useEffect(() => {
     setActive(pathname);
   }, [pathname]);
+
+  const handleLogoutUser = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("name");
+    navigate("/login");
+  };
   const renderNavMenu = navMenu.map((element): JSX.Element => {
     return (
       <ListItem key={element.id}>
@@ -126,6 +132,7 @@ export const SidebarComponent: FC<ISidebarProps> = (
               )}
               <ListItem>
                 <ListItemButton
+                  onClick={handleLogoutUser}
                   className={styled.navItem}
                   sx={{
                     "&:hover": {
@@ -139,7 +146,7 @@ export const SidebarComponent: FC<ISidebarProps> = (
                     <LogoutOutlined />
                   </ListItemIcon>
                   <ListItemText>
-                    <Typography>Logout</Typography>
+                    <Typography>Вийти</Typography>
                   </ListItemText>
                 </ListItemButton>
               </ListItem>
