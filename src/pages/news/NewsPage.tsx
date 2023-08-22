@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../utils/hook";
 import { getNews } from "../../store/thunks/news";
 import { Box, Grid, Link, Typography, useTheme } from "@mui/material";
@@ -8,9 +8,36 @@ import { tokens } from "../../theme";
 export const NewsPage: FC = (): JSX.Element => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [newsItem, setNewsItem] = useState([]);
   const dispatch = useAppDispatch();
   const { news } = useAppSelector((state) => state.news);
-  const renderNewsBlock = news.map((element: any) => (
+
+  const newsItemHeight = useMemo(() => {
+    console.log((newsItem.length += 10));
+    return news.slice(0, (newsItem.length += 10));
+  }, [newsItem]);
+
+  useEffect(() => {
+    setNewsItem(newsItemHeight);
+  }, [news]);
+
+  useEffect(() => {
+    document.addEventListener("scroll", handleScroll);
+    return () => {
+      document.addEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = (e: any) => {
+    if (
+      e.target.documentElement.scrollHeight -
+        (e.target.documentElement.scrollTop + window.innerHeight) <
+      100
+    ) {
+      setNewsItem(newsItemHeight);
+    }
+  };
+  const renderNewsBlock = newsItem.map((element: any) => (
     <Grid
       container
       className={styled.newsBlock}
