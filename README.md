@@ -1,7 +1,7 @@
 # Frontend_React.TS
 
 <p align="center">
-  <a href="#" target="blank"><img src="./src/assets/images/README.png" width="200" alt="go" /></a>
+  <a href="#" target="blank"><img src="./src/assets/images/README.png" width="800" alt="go" /></a>
 </p>
 
 # Getting Started with Create React App
