@@ -1,9 +1,10 @@
-import React, { FC, useEffect, useMemo, useState } from "react";
+import React, { FC, useEffect, useLayoutEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../utils/hook";
 import { getNews } from "../../store/thunks/news";
 import { Box, Grid, Link, Typography, useTheme } from "@mui/material";
 import styled from "./styles.module.css";
 import { tokens } from "../../theme";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export const NewsPage: FC = (): JSX.Element => {
   const theme = useTheme();
@@ -11,31 +12,42 @@ export const NewsPage: FC = (): JSX.Element => {
   const [newsItem, setNewsItem] = useState([]);
   const dispatch = useAppDispatch();
   const { news } = useAppSelector((state) => state.news);
+  const [assetsSlice, setAssetsSlice] = useState(10);
+  const [isHasMore, setIsHasMore] = useState(true);
 
-  const newsItemHeight = useMemo(() => {
-    console.log((newsItem.length += 10));
-    return news.slice(0, (newsItem.length += 10));
-  }, [newsItem]);
+  const newsItemHeight = () => {
+    if (assetsSlice < 60) {
+      setTimeout(() => {
+        setAssetsSlice(assetsSlice + 10);
+        setNewsItem(news.slice(0, assetsSlice));
+        console.log(assetsSlice);
+      }, 1500);
+    } else {
+      setIsHasMore(false);
+    }
+  };
 
-  useEffect(() => {
-    setNewsItem(newsItemHeight);
-  }, [news]);
-
-  useEffect(() => {
-    document.addEventListener("scroll", handleScroll);
-    return () => {
-      document.addEventListener("scroll", handleScroll);
-    };
+  useLayoutEffect(() => {
+    setNewsItem(news.slice(0, assetsSlice));
   }, []);
 
-  const handleScroll = (e: any) => {
-    if (
-      e.target.documentElement.scrollHeight -
-        (e.target.documentElement.scrollTop + window.innerHeight) <
-      100
-    ) {
-      setNewsItem(newsItemHeight);
-    }
+  const InfinityScroll: FC = (): JSX.Element => {
+    return (
+      <InfiniteScroll
+        dataLength={newsItem.length} //This is important field to render the next data
+        next={newsItemHeight}
+        scrollThreshold={0.99}
+        hasMore={isHasMore}
+        loader={<h4>Завантаження...</h4>}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Це були останні новини дня</b>
+          </p>
+        }
+      >
+        {renderNewsBlock}
+      </InfiniteScroll>
+    );
   };
   const renderNewsBlock = newsItem.map((element: any) => (
     <Grid
@@ -93,7 +105,9 @@ export const NewsPage: FC = (): JSX.Element => {
       <Grid className={styled.blockTitle}>
         <Typography variant="h2">Новини</Typography>
       </Grid>
-      <Grid>{renderNewsBlock}</Grid>
+      <Grid>
+        <InfinityScroll />
+      </Grid>
     </Grid>
   );
 };
